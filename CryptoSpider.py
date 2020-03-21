@@ -1,5 +1,6 @@
 import urllib.request
 import re
+import mydb
 
 url = "https://cn.investing.com/crypto/currency-pairs"
 
@@ -20,9 +21,9 @@ for cell_matchs in row_matchs:
     #market = str(cell_matchs.group(3))
     symbol_id = str(cell_matchs.group(4))
     if "crypto" in urlstr or "indices" in urlstr:
-        count += 1
+        count += mydb.add_symbol(symbol_id, symbol)
         print(str(count) + " " + urlstr + " " + symbol + " " + symbol_id)
 
-f = open("crypto.html", 'w', encoding='utf-8')
-f.write(content2)
-f.close()
+#f = open("crypto.html", 'w', encoding='utf-8')
+#f.write(content2)
+#f.close()
